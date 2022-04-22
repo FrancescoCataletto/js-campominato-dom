@@ -11,6 +11,7 @@ Quando l’utente clicca su ogni cella, la cella cliccata si colora di azzurro.
 
 document.getElementById("start-btn").addEventListener("click", initFunction);
 const container = document.getElementById("square-container");
+const bombArr = [];
 
 // SELEZIONE DEL LIVELLO DALL'HTML
 const options = document.getElementById("level");
@@ -22,7 +23,8 @@ function initFunction(){
     // SCELTA DEL NUMERO IN BASE AL LIVELLO DEL GIOCO E PULIZIA DEL CONTAINER
     container.innerHTML = " ";
     const userLevel = numList();
-
+    bombGenerator(userLevel);
+    console.log(bombArr);
     // CREA QUADRATINI IN BASE AL NUMERO CORRISPONDENTE AL LIVELLO SCELTO DLL'USER
     for(let i = 1; i <= userLevel; i++){
         const cell = squareGenerator(container);
@@ -74,4 +76,14 @@ function randomNum(min, max){
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-console.log(randomNum(1, 10));
+
+// FUNZIONE PER PRENDERE 16 NUMERI CASUALI NEL RANGE
+
+function bombGenerator(param){
+    let bombNumber;
+    bombArr.length = 0;
+    while(bombArr.length < 16){
+        bombNumber = randomNum(1, param);
+        bombArr.push(bombNumber);
+    }
+}

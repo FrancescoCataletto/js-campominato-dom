@@ -34,8 +34,12 @@ function initFunction(){
             cell.classList.add("clicked", "white");
             cell.firstChild.classList.add("visible");
         })
+        if(bombArr.includes(i)){
+            cell.addEventListener("click", function(){
+                cell.classList.add("bomb");
+            })
+        }
     }
-    
 }
 
 // ----------------
@@ -51,7 +55,6 @@ function squareGenerator(target){
         cell.classList.add("cell", "x10");
     }
     target.append(cell);
-    console.log(cell);
     return cell;
 }
 

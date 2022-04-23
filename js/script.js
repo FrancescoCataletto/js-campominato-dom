@@ -22,6 +22,7 @@ const hard = options[2].value;
 function initFunction(){
     // SCELTA DEL NUMERO IN BASE AL LIVELLO DEL GIOCO E PULIZIA DEL CONTAINER
     container.innerHTML = " ";
+    bombArr.length = 0;
     const userLevel = numList();
     bombGenerator(userLevel);
     console.log(bombArr);
@@ -81,9 +82,12 @@ function randomNum(min, max){
 
 function bombGenerator(param){
     let bombNumber;
-    bombArr.length = 0;
     while(bombArr.length < 16){
         bombNumber = randomNum(1, param);
-        bombArr.push(bombNumber);
+        if(bombArr.includes(bombNumber)){
+            console.log("already in");
+        }else if(!bombArr.includes(bombNumber)){
+            bombArr.push(bombNumber);
+        }
     }
 }

@@ -13,6 +13,7 @@ document.getElementById("start-btn").addEventListener("click", initFunction);
 const container = document.getElementById("square-container");
 const bombArr = [];
 const counter = document.getElementById("counter");
+let gameStop = false;
 
 
 // SELEZIONE DEL LIVELLO DALL'HTML
@@ -41,9 +42,9 @@ function initFunction(){
             this.classList.add("clicked", "white");
             this.firstChild.classList.add("visible");
             contatore++; 
-            counter.innerHTML = contatore;
+            counter.innerHTML = `Hai totalizzato ${contatore} punti`;
         })
-        
+           
         if(bombArr.includes(i)){
             bombsElements.push(cell);
             console.log(bombsElements);
@@ -53,7 +54,13 @@ function initFunction(){
                 bombsElements[i].firstChild.classList.add("visible"); 
                 bombsElements[i].classList.add("bomb", "white");
                }
-            }) 
+               gameStop = true;
+               if(gameStop){
+                const blocker = document.createElement("div");
+                blocker.classList.add("blocked");
+                container.append(blocker);
+            }
+            })  
         }
     }
 }

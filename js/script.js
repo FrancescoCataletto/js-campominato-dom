@@ -41,8 +41,7 @@ function initFunction(){
         cell.addEventListener("click", function(){
             this.classList.add("clicked", "white");
             this.firstChild.classList.add("visible");
-            contatore++; 
-            counter.innerHTML = `Hai totalizzato ${contatore} punti`;
+            contatore++;  
         })
            
         if(bombArr.includes(i)){
@@ -59,6 +58,8 @@ function initFunction(){
                 const blocker = document.createElement("div");
                 blocker.classList.add("blocked");
                 container.append(blocker);
+                contatore--;
+                counter.innerHTML = `Hai totalizzato ${contatore} punti`;
             }
             })  
         }

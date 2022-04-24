@@ -12,18 +12,25 @@ Quando l’utente clicca su ogni cella, la cella cliccata si colora di azzurro.
 document.getElementById("start-btn").addEventListener("click", initFunction);
 const container = document.getElementById("square-container");
 const bombArr = [];
+const counter = document.getElementById("counter");
+
 
 // SELEZIONE DEL LIVELLO DALL'HTML
 const options = document.getElementById("level");
 const easy = options[0].value;
 const medium = options[1].value;
 const hard = options[2].value;
+const bombsElements = [];
+
 
 function initFunction(){
     // SCELTA DEL NUMERO IN BASE AL LIVELLO DEL GIOCO E PULIZIA DEL CONTAINER
     container.innerHTML = " ";
     bombArr.length = 0;
+    let contatore = 0;
+    counter.innerHTML = " ";
     const userLevel = numList();
+    
     bombGenerator(userLevel);
     console.log(bombArr);
     // CREA QUADRATINI IN BASE AL NUMERO CORRISPONDENTE AL LIVELLO SCELTO DLL'USER
@@ -31,16 +38,27 @@ function initFunction(){
         const cell = squareGenerator(container);
         cell.innerHTML = `<span class="hidden">${i}</span>`;
         cell.addEventListener("click", function(){
-            cell.classList.add("clicked", "white");
-            cell.firstChild.classList.add("visible");
+            this.classList.add("clicked", "white");
+            this.firstChild.classList.add("visible");
+            contatore++; 
+            counter.innerHTML = contatore;
         })
+        
         if(bombArr.includes(i)){
+            bombsElements.push(cell);
+            console.log(bombsElements);
             cell.addEventListener("click", function(){
-                cell.classList.add("bomb");
-            })
+               cell.classList.add("bomb");
+               for(let i = 0; i< bombsElements.length ; i++){
+                bombsElements[i].firstChild.classList.add("visible"); 
+                bombsElements[i].classList.add("bomb", "white");
+               }
+            }) 
         }
     }
 }
+
+
 
 // ----------------
 
@@ -55,6 +73,7 @@ function squareGenerator(target){
         cell.classList.add("cell", "x10");
     }
     target.append(cell);
+    console.log(cell)
     return cell;
 }
 
@@ -94,3 +113,4 @@ function bombGenerator(param){
         }
     }
 }
+

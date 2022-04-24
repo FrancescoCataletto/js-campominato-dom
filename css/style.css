@@ -79,6 +79,7 @@ header{
     background-color: red;
 }
 
+
 .white{
     color: white;
 }
@@ -96,4 +97,8 @@ header{
 .x10{
     width: calc(100% / 10);
     height: calc(100% / 10);
+}
+
+#counter{
+    color: yellow;
 }

@@ -27,6 +27,8 @@ header{
     padding: 5px 10px;
 }
 
+/* MAIN */
+
 #main-wrapper{
     display: flex;
     justify-content: center;

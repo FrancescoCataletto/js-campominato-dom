@@ -47,6 +47,10 @@ header{
     background-color: white;
     position: relative;
 }
+#main-wrapper p{
+    font-size: 50px;
+    color: rgb(1, 218, 98);
+}
 
 .cell{
     display: flex;

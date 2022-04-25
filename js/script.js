@@ -29,6 +29,7 @@ function initFunction(){
     container.innerHTML = " ";
     bombArr.length = 0;
     let contatore = 0;
+    document.getElementById("title").innerHTML = " ";
     counter.innerHTML = " ";
     const userLevel = numList();
     
